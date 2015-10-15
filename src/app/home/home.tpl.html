@@ -1,0 +1,24 @@
+<h1>{{ home.title }}</h1>
+
+<div class="polygon-creator-wrap">
+    <h4>Polygon Points</h4>
+    <button ng-click="addPoint()">+ Add point {{ counter }}</button>
+    <form>
+        <div class="group-input" ng-repeat="point in points">
+            <label>Point {{ $index + 1 }}</label>
+            <input type="text" placeholder="X" ng-model="point.x" />
+            <input type="text" placeholder="Y" ng-model="point.y"/>
+        </div>
+        <button ng-click="drawPolygon()">Draw Polygon</button>
+    </form>
+    <button type="button" ng-click="vm.clear()">Clear Points</button>
+</div>
+
+<div class="chart-container">
+    <graph data="points" update="vm.update(funct)"></graph>
+</div>
+
+<div ng-if="vm.area">
+    <h4>Area:</h4>
+    <p>{{ vm.area }}</p>
+</div>
